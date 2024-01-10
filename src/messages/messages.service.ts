@@ -4,9 +4,9 @@ import { Message } from './entities/message.entity';
 
 @Injectable()
 export class MessagesService {
-  //in memory array to mock messages
-  messages: Message[] = [{ name: 'HASSAN', text: 'Holaa!' }];
-  clientToUser = {}; //map to store the client id and the user name
+  // criando uma mensagem no service
+  messages: Message[] = [{ name: 'Hassan', text: 'Holaa!' }];
+  clientToUser = {};
 
   identify(name: string, clientId: string) {
     this.clientToUser[clientId] = name;
@@ -23,7 +23,8 @@ export class MessagesService {
       name: this.clientToUser[clientId],
       text: createMessageDto.text,
     };
-    this.messages.push(message); //TODO improve this to check which user is using the app
+    this.messages.push(message);
+
     return message;
   }
 
